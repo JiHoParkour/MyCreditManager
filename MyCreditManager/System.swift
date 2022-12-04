@@ -13,7 +13,7 @@ enum PermittedInput: String {
     case three = "3"
     case four = "4"
     case five = "5"
-    case exit = "x"
+    case exit = "X"
 }
 
 enum SystemState {
@@ -49,19 +49,24 @@ class System: SystemProtocol {
         switch input {
         case PermittedInput.one.rawValue:
             Print.Console.studentNameForAdd()
-            studentManager.addStudent(name: getValidInput())
+            guard let input = validInput() else { return }
+            studentManager.addStudent(name: input)
         case PermittedInput.two.rawValue:
             Print.Console.studentNameForRemove()
-            studentManager.removeStudent(name: getValidInput())
+            guard let input = validInput() else { return }
+            studentManager.removeStudent(name: input)
         case PermittedInput.three.rawValue:
             Print.Console.infoForAddGrade()
-            studentManager.addGrade(input: getValidInput())
+            guard let input = validInput() else { return }
+            studentManager.addGrade(input: input)
         case PermittedInput.four.rawValue:
             Print.Console.infoForRemoveGrade()
-            studentManager.removeGrade(input: getValidInput())
+            guard let input = validInput() else { return }
+            studentManager.removeGrade(input: input)
         case PermittedInput.five.rawValue:
             Print.Console.studentNameForShowGrade()
-             studentManager.showAverage(name: getValidInput())
+            guard let input = validInput() else { return }
+             studentManager.showAverage(name: input)
         case PermittedInput.exit.rawValue:
             terminate()
         default:
@@ -74,11 +79,11 @@ class System: SystemProtocol {
         self.state = .terminate
     }
     
-    private func getValidInput() -> String {
-        guard let input = readLine() else { return "" } //에러 처리를 해보기 nil일때 isEmpty일때
-        guard input != "" else {
+    private func validInput() -> String? {
+        guard let input = readLine() else { return nil }
+        guard false == input.isEmpty else {
             Print.Console.inputError()
-            return ""
+            return nil
         }
         return input
     }
