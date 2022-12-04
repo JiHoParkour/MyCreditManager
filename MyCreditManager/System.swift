@@ -7,6 +7,15 @@
 
 import Foundation
 
+enum PermittedInput: String {
+    case one = "1"
+    case two = "2"
+    case three = "3"
+    case four = "4"
+    case five = "5"
+    case exit = "x"
+}
+
 enum SystemState {
     case run
     case terminate
@@ -20,7 +29,6 @@ protocol SystemProtocol {
 
 class System: SystemProtocol {
     var state: SystemState = .terminate
-    private let permittedInput: [String] = ["1", "2", "3", "4", "5", "x", "X"]
     private var studentManager: StudentManagerProtocol
     
     init (studentManager: StudentManagerProtocol) {
@@ -35,28 +43,29 @@ class System: SystemProtocol {
     }
     
     private func showMenu() {
-        print(PrintMessage.menu)
+        Print.Console.menu()
         guard let input = readLine() else { return }
-        guard permittedInput.contains(input) else { return  print(PrintMessage.menuInputError) }
+        
         switch input {
-        case "1":
-            print(PrintMessage.studentNameForAdd)
+        case PermittedInput.one.rawValue:
+            Print.Console.studentNameForAdd()
             studentManager.addStudent(name: getValidInput())
-        case "2":
-            print(PrintMessage.studentNameForRemove)
+        case PermittedInput.two.rawValue:
+            Print.Console.studentNameForRemove()
             studentManager.removeStudent(name: getValidInput())
-        case "3":
-            print(PrintMessage.infoForAddGrade)
+        case PermittedInput.three.rawValue:
+            Print.Console.infoForAddGrade()
             studentManager.addGrade(input: getValidInput())
-        case "4":
-            print(PrintMessage.infoForRemoveGrade)
+        case PermittedInput.four.rawValue:
+            Print.Console.infoForRemoveGrade()
             studentManager.removeGrade(input: getValidInput())
-        case "5":
-            print(PrintMessage.studentNameForShowGrade)
+        case PermittedInput.five.rawValue:
+            Print.Console.studentNameForShowGrade()
              studentManager.showAverage(name: getValidInput())
-        case "X":
+        case PermittedInput.exit.rawValue:
             terminate()
         default:
+            Print.Console.menuInputError()
             break
         }
     }
@@ -66,9 +75,9 @@ class System: SystemProtocol {
     }
     
     private func getValidInput() -> String {
-        guard let input = readLine() else { return "" }
+        guard let input = readLine() else { return "" } //에러 처리를 해보기 nil일때 isEmpty일때
         guard input != "" else {
-            print(PrintMessage.inputError)
+            Print.Console.inputError()
             return ""
         }
         return input
