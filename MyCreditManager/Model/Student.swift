@@ -10,13 +10,13 @@ import Foundation
 
 struct Student {
     let name: String
-    var subjectDic: [String:String] = [:]
+    var subjects: [String:String] = [:]
     
     mutating func updateSubject(subject: String, grade: String) {
-        self.subjectDic[subject] = grade
+        self.subjects[subject] = grade
     }
     
     mutating func removeSubject(subject: String) {
-        self.subjectDic.removeValue(forKey: subject)
+        self.subjects.removeValue(forKey: subject)
     }
 }

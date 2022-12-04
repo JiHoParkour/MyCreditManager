@@ -8,7 +8,7 @@
 import Foundation
 
 protocol StudentManagerProtocol {
-    var studentDic: [String:Student] { get }
+    var students: [String:Student] { get }
     
     func addStudent(name: String)
     func removeStudent(name: String)
@@ -18,25 +18,25 @@ protocol StudentManagerProtocol {
 }
 
 class StudentManager: StudentManagerProtocol {
-    var studentDic: [String:Student]
-    let gradeScoreDic: [String: Float] = ["A+":4.5, "A":4.0, "B+":3.5, "B":3.0, "C+":2.5, "C":2.0, "D+":1.5, "D":1.0, "F":0.0]
+    var students: [String:Student]
+    let gradeScoreDictionary: [String: Float] = ["A+":4.5, "A":4.0, "B+":3.5, "B":3.0, "C+":2.5, "C":2.0, "D+":1.5, "D":1.0, "F":0.0]
     
     init() {
-        self.studentDic = [:]
+        self.students = [:]
     }
     
     func addStudent(name: String) {
-        if let _ = studentDic[name] {
+        if let _ = students[name] {
             Print.Console.addStudentSuccess(name: name)
         } else {
-            self.studentDic[name] = Student(name: name)
+            self.students[name] = Student(name: name)
             Print.Console.addStudentFail(name: name)
         }
     }
     
     func removeStudent(name: String) {
-        if let _ = studentDic[name] {
-            studentDic.removeValue(forKey: name)
+        if let _ = students[name] {
+            students.removeValue(forKey: name)
             Print.Console.removeStudentSuccess(name: name)
         } else {
             Print.Console.removeStudentFail(name: name)
@@ -51,9 +51,9 @@ class StudentManager: StudentManagerProtocol {
         let subject = String(inputArray[1])
         let grade = String(inputArray[2])
         
-        if var student = studentDic[name] {
+        if var student = students[name] {
             student.updateSubject(subject: subject, grade: grade)
-            studentDic[name] = student
+            students[name] = student
             Print.Console.addGrandSuccess(name: name, subject: subject, grade: grade)
         } else {
             Print.Console.inputError()
@@ -67,9 +67,9 @@ class StudentManager: StudentManagerProtocol {
         let name = String(inputArray[0])
         let subject = String(inputArray[1])
         
-        if var student = studentDic[name] {
+        if var student = students[name] {
             student.removeSubject(subject: subject)
-            studentDic[name] = student
+            students[name] = student
             Print.Console.removeGradeSuccess(name: name, subject: subject)
         } else {
             Print.Console.removeGradeFail(name: name)
@@ -77,12 +77,12 @@ class StudentManager: StudentManagerProtocol {
     }
     
     func showAverage(name: String) {
-        if let student = studentDic[name] {
+        if let student = students[name] {
             var total: Float = 0.0
             var validSubjectCount: Float = 0.0
-            for (subject, grade) in student.subjectDic {
+            for (subject, grade) in student.subjects {
                 Print.Console.showAverageGrade(subject: subject, grade: grade)
-                total = total + (gradeScoreDic[grade] ?? 0.0)
+                total = total + (gradeScoreDictionary[grade] ?? 0.0)
                 validSubjectCount += 1.0
             }
             let averageScore = round((total/validSubjectCount)*100)/100
