@@ -8,11 +8,4 @@
 import Foundation
 
 let system = System(studentManager: StudentManager())
-
 system.start()
-
-
-
-
-
-

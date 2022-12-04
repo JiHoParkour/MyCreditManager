@@ -33,7 +33,6 @@ enum Print {
         static func studentNameForShowGrade() {
             print("평점을 알고싶은 학생의 이름을 입력해주세요.")
         }
-        
         static func addStudentSuccess(name: String) {
             print("\(name)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
         }
