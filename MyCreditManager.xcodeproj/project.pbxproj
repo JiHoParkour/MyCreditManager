@@ -10,7 +10,8 @@
 		F7A4314D292B6EBD00797065 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A4314C292B6EBD00797065 /* main.swift */; };
 		F7A43154292B7A4400797065 /* StudentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A43153292B7A4400797065 /* StudentManager.swift */; };
 		F7A43158292B7CA000797065 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A43157292B7CA000797065 /* System.swift */; };
-		F7A4315A292CA41500797065 /* PrintMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A43159292CA41500797065 /* PrintMessage.swift */; };
+		F7A4315A292CA41500797065 /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A43159292CA41500797065 /* Print.swift */; };
+		F7A4315C293CBD9400797065 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A4315B293CBD9400797065 /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +31,8 @@
 		F7A4314C292B6EBD00797065 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F7A43153292B7A4400797065 /* StudentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentManager.swift; sourceTree = "<group>"; };
 		F7A43157292B7CA000797065 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
-		F7A43159292CA41500797065 /* PrintMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintMessage.swift; sourceTree = "<group>"; };
+		F7A43159292CA41500797065 /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		F7A4315B293CBD9400797065 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +65,21 @@
 		F7A4314B292B6EBD00797065 /* MyCreditManager */ = {
 			isa = PBXGroup;
 			children = (
+				F7A4315D293CC83C00797065 /* Model */,
 				F7A4314C292B6EBD00797065 /* main.swift */,
 				F7A43153292B7A4400797065 /* StudentManager.swift */,
 				F7A43157292B7CA000797065 /* System.swift */,
-				F7A43159292CA41500797065 /* PrintMessage.swift */,
+				F7A43159292CA41500797065 /* Print.swift */,
 			);
 			path = MyCreditManager;
+			sourceTree = "<group>";
+		};
+		F7A4315D293CC83C00797065 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7A4315B293CBD9400797065 /* Student.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +142,8 @@
 			files = (
 				F7A43158292B7CA000797065 /* System.swift in Sources */,
 				F7A4314D292B6EBD00797065 /* main.swift in Sources */,
-				F7A4315A292CA41500797065 /* PrintMessage.swift in Sources */,
+				F7A4315A292CA41500797065 /* Print.swift in Sources */,
+				F7A4315C293CBD9400797065 /* Student.swift in Sources */,
 				F7A43154292B7A4400797065 /* StudentManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
